@@ -18,29 +18,16 @@ Docker 自身仍在快速发展中，生态环境也在蓬勃成长。欢迎参�
 * [修订记录](revision.md)
 * [贡献者名单](https://github.com/yeasy/docker_practice/graphs/contributors)
 
-## 技术交流
-欢迎关注 DockerPool 社区微博 [@dockerpool](http://weibo.com/u/5345404432)，或加入 Docker 技术交流 QQ 群或微信组，分享 Docker 资源，交流 Docker 技术。
-
-* QQ 群 I   （已满）：341410255
-* QQ 群 II  （已满）：419042067
-* QQ 群 III （已满）：210028779
-* QQ 群 IV  （已满）：483702734
-* QQ 群 V   （已满）：460598761
-* QQ 群 VI  （已满）：581983671
-* QQ 群 VII （已满）：252403484
-* QQ 群 VIII（已满）：544818750
-* QQ 群 IX  （可加）：571502246
-
 ## 进阶学习
-![Docker 技术入门与实战](_images/docker_primer2.png)
 
 《[Docker 技术入门与实战](http://item.jd.com/12121728.html)》第二版已经正式出版，针对初版进行内容升级，欢迎大家阅读使用并反馈建议。
 
 * [京东图书](https://item.jd.com/12121728.html)
 * [China-Pub](http://product.china-pub.com/5089907)
 
-## 鼓励项目
-
-欢迎鼓励项目一杯 coffee~
-
-![coffee](_images/donate.jpeg)
+## 依赖开源库
+- [ditto](https://github.com/wuliupo/ditto.js): 使用下面几个开源库封装 md 文档浏览器
+- [store.js](https://github.com/marcuswestin/store.js): localStorage wrapper for all browsers
+- [ditto.js](https://github.com/chutsu/ditto): lightweight markdown doc system
+- [marked.js](https://github.com/chjj/marked): full-featured markdown parser and compiler
+- [prism.js](http://prismjs.com/): lightweight, extensible syntax highlighter
