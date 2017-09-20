@@ -72,7 +72,15 @@ Docker 命令有两大类，客户端命令和服务端命令。前者是主要�
 * --userland-proxy=true|false：是否使用用户态代理来实现容器间和出容器的回环通信，默认为 true；
 * --userns-remap=default|uid:gid|user:group|user|uid：指定容器的用户命名空间，默认是创建新的 UID 和 GID 映射到容器内进程。
 
-## 客户端命令
+## 客户端命令（子命令）
+
+子命令分类：
+- 容器生命周期管理：run、start/stop/restart、kill、rm、pause/unpause、create、exec
+- 容器操作：ps、inspect、top、attach、events、logs、wait、export、port
+- 容器rootfs命令：commit、cp、diff
+- 镜像仓库：login、pull、push、search
+- 本地镜像管理：images、rmi、tag、build、history、save、import
+- 环境信息：info、version
 
 可以通过 `man docker-COMMAND` 或 `docker help COMMAND` 来查看这些命令的具体用法。
 
@@ -123,4 +131,4 @@ Docker 命令有两大类，客户端命令和服务端命令。前者是主要�
 * wait：阻塞直到一个容器终止，然后输出它的退出符。
 
 ## 一张图总结 Docker 的命令
-![Docker 命令总结](../_images/cmd_logic.png)
+![Docker 命令总结](../_images/cmd_logic.gif)
