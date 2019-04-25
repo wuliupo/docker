@@ -1,4 +1,4 @@
-## 其它生成镜像的方法
+## 其它制作镜像的方式
 
 除了标准的使用 `Dockerfile` 生成镜像的方法外，由于各种特殊需求和历史原因，还提供了一些其它方法用以生成镜像。
 
@@ -8,7 +8,7 @@
 
 压缩包可以是本地文件、远程 Web 文件，甚至是从标准输入中得到。压缩包将会在镜像 `/` 目录展开，并直接作为镜像第一层提交。
 
-比如我们想要创建一个 [OpenVZ](https://openvz.org/Main_Page) 的 Ubuntu 14.04 [模板](https://openvz.org/Download/template/precreated)的镜像：
+比如我们想要创建一个 [OpenVZ](https://openvz.org) 的 Ubuntu 14.04 [模板](https://openvz.org/Download/template/precreated)的镜像：
 
 ```bash
 $ docker import \
@@ -20,10 +20,10 @@ sha256:f477a6e18e989839d25223f301ef738b69621c4877600ae6467c4e5289822a79B/78.42 M
 
 这条命令自动下载了 `ubuntu-14.04-x86_64-minimal.tar.gz` 文件，并且作为根文件系统展开导入，并保存为镜像 `openvz/ubuntu:14.04`。
 
-导入成功后，我们可以用 `docker images` 看到这个导入的镜像：
+导入成功后，我们可以用 `docker image ls` 看到这个导入的镜像：
 
 ```bash
-$ docker images openvz/ubuntu
+$ docker image ls openvz/ubuntu
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 openvz/ubuntu       14.04               f477a6e18e98        55 seconds ago      214.9 MB
 ```
@@ -38,7 +38,7 @@ f477a6e18e98        About a minute ago                       214.9 MB           
 
 ### `docker save` 和 `docker load`
 
-Docker 还提供了 `docker load` 和 `docker save` 命令，用以将镜像保存为一个 `tar` 文件，然后传输到另一个位置上，再加载进来。这是在没有 Docker Registry 时的做法，现在已经不推荐，镜像迁移应该直接使用 Docker Registry，无论是直接使用 Docker Hub 还是使用内网私有 Registry 都可以。
+Docker 还提供了 `docker save` 和 `docker load` 命令，用以将镜像保存为一个文件，然后传输到另一个位置上，再加载进来。这是在没有 Docker Registry 时的做法，现在已经不推荐，镜像迁移应该直接使用 Docker Registry，无论是直接使用 Docker Hub 还是使用内网私有 Registry 都可以。
 
 #### 保存镜像
 
@@ -47,12 +47,24 @@ Docker 还提供了 `docker load` 和 `docker save` 命令，用以将镜像保�
 比如我们希望保存这个 `alpine` 镜像。
 
 ```bash
-$ docker images alpine
+$ docker image ls alpine
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 alpine              latest              baa5d63471ea        5 weeks ago         4.803 MB
 ```
 
 保存镜像的命令为：
+
+```bash
+$ docker save alpine -o filename
+$ file filename
+filename: POSIX tar archive
+```
+
+这里的 filename 可以为任意名称甚至任意后缀名，但文件的本质都是归档文件
+
+**注意：如果同名则会覆盖（没有警告）**
+
+若使用 `gzip` 压缩：
 
 ```bash
 $ docker save alpine | gzip > alpine-latest.tar.gz
